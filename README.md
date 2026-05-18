@@ -22,6 +22,8 @@ picotool load -fu buildroot/output/images/flash-image.uf2
 
 ![Image of boot](images/booting.png)
 
+Booting with more free ram, booting faster, initrd relocated to a flash.
+![Image of boot](images/booting2.png)
 #### NOTES on Atomics
 On page 307 of the RP2350 Datasheet MCAUSE register CODE 7 says:
 > Store/AMO access fault. A store/AMO failed a PMP check, or

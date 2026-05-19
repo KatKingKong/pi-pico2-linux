@@ -10,6 +10,10 @@ BR2_RISCV_32=y
 #
 BR2_BINUTILS_VERSION_2_44_X=y
 
+#
+# GCC Options
+BR2_GCC_VERSION_15_X=y
+#BR2_GCC_VERSION="15.1.0"
 # System
 BR2_GLOBAL_PATCH_DIR="$(BR2_EXTERNAL)/board/raspberrypi/raspberrypi-pico2/patches"
 BR2_PTHREADS_NONE=y

@@ -14,6 +14,13 @@ BR2_BINUTILS_VERSION_2_44_X=y
 # GCC Options
 BR2_GCC_VERSION_15_X=y
 #BR2_GCC_VERSION="15.1.0"
+
+#
+# Toolchain Generic Options
+#
+BR2_TARGET_OPTIMIZATION="-march=rv32imc_zicsr_zifencei_zba_zbb_zbs_zbkb_zca_zcb_zcmp_zicsr"
+
+
 # System
 BR2_GLOBAL_PATCH_DIR="$(BR2_EXTERNAL)/board/raspberrypi/raspberrypi-pico2/patches"
 BR2_PTHREADS_NONE=y

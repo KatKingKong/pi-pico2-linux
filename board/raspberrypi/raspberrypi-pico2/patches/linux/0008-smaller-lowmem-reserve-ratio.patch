@@ -1,0 +1,11 @@
+--- a/mm/page_alloc.c	2026-05-14 22:36:22.169148668 +0200
++++ b/mm/page_alloc.c	2026-05-14 22:36:50.402810086 +0200
+@@ -235,7 +235,7 @@
+ #ifdef CONFIG_ZONE_DMA32
+ 	[ZONE_DMA32] = 256,
+ #endif
+-	[ZONE_NORMAL] = 32,
++	[ZONE_NORMAL] = 64,
+ #ifdef CONFIG_HIGHMEM
+ 	[ZONE_HIGHMEM] = 0,
+ #endif

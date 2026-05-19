@@ -1,0 +1,11 @@
+--- a/include/linux/binfmts.h	2025-05-26 01:09:23.000000000 +0200
++++ b/include/linux/binfmts.h	2026-05-11 12:44:48.627978878 +0200
+@@ -21,7 +21,7 @@
+ 	unsigned long vma_pages;
+ 	unsigned long argmin; /* rlimit marker for copy_strings() */
+ #else
+-# define MAX_ARG_PAGES	32
++# define MAX_ARG_PAGES	4
+ 	struct page *page[MAX_ARG_PAGES];
+ #endif
+ 	struct mm_struct *mm;

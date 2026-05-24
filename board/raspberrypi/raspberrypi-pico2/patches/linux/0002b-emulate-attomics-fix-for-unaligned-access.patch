@@ -1,0 +1,30 @@
+--- ./arch/riscv/kernel/traps.c	2026-05-24 15:44:18.242963221 +0200
++++ /tmp/traps.c	2026-05-24 15:40:48.381035115 +0200
+@@ -43,7 +43,12 @@
+ }
+ 
+ static void do_atomic(struct pt_regs *regs){
+-	uint32_t op = *(uint32_t*)regs->epc;
++	// regs->epc may not be naturaly aligned when using risc-v C extension.
++	// this avoids unaligned load exception
++	uint16_t lo = *(volatile uint16_t*)(regs->epc);
++	uint16_t hi = *(volatile uint16_t*)(regs->epc + 2);
++	uint32_t op = ((uint32_t)hi << 16) | lo;
++
+ 	uint32_t irmid = (op>>27)&0x1f;
+ 	unsigned long rs1 = *regs_get_register_p(regs,(op >> 15) & 0x1f);
+ 	unsigned long rs2 = *regs_get_register_p(regs,(op >> 20) & 0x1f);
+@@ -70,7 +75,12 @@
+ }
+ 
+ static int do_exinsn(struct pt_regs *regs){
+-	uint32_t op = *(uint32_t*)regs->epc;
++	// regs->epc may not be naturaly aligned when using risc-v C extension.
++	// this avoids unaligned load exception
++	uint16_t lo = *(volatile uint16_t*)(regs->epc);
++	uint16_t hi = *(volatile uint16_t*)(regs->epc + 2);
++	uint32_t op = ((uint32_t)hi << 16) | lo;
++
+ 	switch (op & 0x7f) {
+ 		case 0b0101111: do_atomic(regs); return 1;
+ 		default: return 0;
